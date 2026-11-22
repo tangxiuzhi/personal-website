@@ -4,7 +4,7 @@
 
 现在可以在本地打开。还没有开启 GitHub Pages，也没有添加 `CNAME` 或绑定域名。
 
-文章和公开日记还没有内容。游戏栏目现有《四季河谷的漫步》，文件在 `games/seasons-valley/index.html`。空状态是如实写的，不要改成还没发生的经历、作品或日期。
+公开日记还没有内容。游戏栏目现有《四季河谷的漫步》，文件在 `games/seasons-valley/index.html`。文章栏有三篇 X 收藏摘读，放在 `articles/`，不是唐修治的原创文章。空状态是如实写的，不要改成还没发生的经历、作品或日期。
 
 ## 本地查看
 
@@ -54,7 +54,7 @@ python3 -m http.server 8080
 
 1. 在 `articles/` 新建文件，例如 `articles/note.html`。文件名用简短英文或拼音，避免空格。
 2. 把下面的骨架放进去，改标题和正文。
-3. 打开 `articles/index.html`，删掉「还没有文章。」那段，加上列表链接。
+3. 打开 `articles/index.html`，在列表里加上链接。若列表还是空状态，先去掉「还没有文章。」。
 4. 只提交准备公开的文字。
 
 ```html
