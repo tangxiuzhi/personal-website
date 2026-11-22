@@ -181,11 +181,39 @@ p {
 .entries a {
   color: var(--link);
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .entries p {
   margin: 0.3rem 0 0;
   color: var(--muted);
+}
+
+.kicker {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.meta {
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.meta p,
+.article-body p {
+  margin: 0.45rem 0;
+}
+
+.meta a,
+.article-body a {
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin: 1.5rem 0 0.4rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
 }
 
 .site-footer {
