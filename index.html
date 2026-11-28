@@ -1,64 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="唐修治的公开静态个人网站，用于放置文章、公开日记和 HTML 游戏。">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
-  <title>唐修治的个人网站</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <a class="skip" href="#content">跳到内容</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="site-name" href="index.html">唐修治</a>
-      <nav aria-label="栏目">
-        <ul>
-          <li><a href="index.html" aria-current="page">首页</a></li>
-          <li><a href="articles/index.html">文章</a></li>
-          <li><a href="diary/index.html">日记</a></li>
-          <li><a href="games/index.html">游戏</a></li>
-          <li><a href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login">工作台</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main id="content" class="wrap">
-    <h1>唐修治的个人网站</h1>
-    <p class="lead">这是一个对所有人公开的静态网站，用来放文章、公开日记，以及可以在浏览器里直接打开的 HTML 游戏。</p>
-    <p>文章和公开日记还没有放上来。</p>
-    <ul class="sections">
-      <li>
-        <a href="articles/index.html">
-          <span class="section-label">文章</span>
-          <span class="section-note">还没有文章。</span>
-        </a>
-      </li>
-      <li>
-        <a href="diary/index.html">
-          <span class="section-label">日记</span>
-          <span class="section-note">还没有公开日记。</span>
-        </a>
-      </li>
-      <li>
-        <a href="games/seasons-valley/index.html">
-          <span class="section-label">游戏</span>
-          <span class="section-note">《四季河谷的漫步》</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login">
-          <span class="section-label">工作台</span>
-          <span class="section-note">永州传输全流程督办 · 授权账号登录</span>
-        </a>
-      </li>
-    </ul>
-  </main>
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>本站的文章、日记和游戏为公开内容。工作台使用独立账号登录，业务资料仅限授权账号访问。</p>
-    </div>
-  </footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="唐修治的个人空间：文字、小游戏、新闻与工作流登录台。"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <title>个人空间 · 唐修治</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#content">跳到内容</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="index.html"
+          ><span class="monogram" aria-hidden="true">唐</span
+          ><span>唐修治<small>PERSONAL SPACE</small></span></a
+        >
+        <nav aria-label="主导航">
+          <ul>
+            <li><a href="index.html" aria-current="page">首页</a></li>
+            <li><a href="articles/index.html">文章</a></li>
+            <li><a href="games/index.html">游戏</a></li>
+            <li><a href="news/index.html">新闻</a></li>
+            <li>
+              <a
+                href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login"
+                >工作台</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a class="admin-link" href="admin/index.html"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="11" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg
+          ><span>管理后台</span></a
+        >
+      </div>
+    </header>
+    <main id="content">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="short-line"></span> MY LITTLE CORNER OF THE INTERNET
+          </p>
+          <h1>
+            把想法写下，<br />把世界<span class="accent-text">打开。</span>
+          </h1>
+          <p class="hero-description">
+            你好，我是唐修治。<br />这里装着我的文字、做过的小游戏，<br
+              class="desktop-break"
+            />以及日常工作里的一点秩序。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="articles/index.html">随便读读</a
+            ><a class="text-link" href="games/index.html">去玩一会儿</a>
+          </div>
+          <p class="hero-note">保持好奇，慢慢创造。</p>
+        </div>
+        <div
+          class="hero-art"
+          role="img"
+          aria-label="由轨道、文字卡片和绿色山谷组成的个人创作空间插画"
+        >
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="art-cross cross-one">+</div>
+          <div class="art-cross cross-two">+</div>
+          <div class="art-window">
+            <div class="window-bar">
+              <span></span><span></span><span></span
+              ><small>A SPACE TO CREATE</small>
+            </div>
+            <div class="window-landscape">
+              <div class="sun"></div>
+              <div class="hill hill-back"></div>
+              <div class="hill hill-front"></div>
+              <div class="landscape-caption">
+                在自己的节奏里，<br />找到新的风景。
+              </div>
+            </div>
+          </div>
+          <div class="floating-note">
+            <span class="note-symbol">Aa</span>
+            <div>一些文字<br /><small>留住转瞬即逝的想法</small></div>
+          </div>
+          <div class="art-label">WORDS · PLAY · EVERYDAY</div>
+          <div class="art-star">✳</div>
+        </div>
+      </section>
+      <section class="directory wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXPLORE MY SPACE</p>
+            <h2>在这里，随意逛逛。</h2>
+          </div>
+          <p>有时认真记录，有时只是玩玩。</p>
+        </div>
+        <div class="portal-grid">
+          <a class="portal-card portal-articles" href="articles/index.html"
+            ><div class="card-top">
+              <span class="icon-box"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h5"
+                  /></svg></span
+              ><span class="card-tag">WRITING</span>
+            </div>
+            <h3>文字与思考</h3>
+            <p>把想法整理成文字，留给以后的自己。</p>
+            <span class="card-bottom">进入栏目</span></a
+          ><a class="portal-card portal-games" href="games/index.html"
+            ><div class="card-top">
+              <span class="icon-box"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M8 8h8c3 0 5 9 3 10-2 1-4-3-5-3h-4c-1 0-3 4-5 3C3 17 5 8 8 8zM8 10v5M5.5 12.5h5M16 11h.01M18 14h.01"
+                  /></svg></span
+              ><span class="card-tag">PLAYGROUND</span>
+            </div>
+            <h3>游戏与漫游</h3>
+            <p>留一点时间给好奇，在浏览器里探索。</p>
+            <span class="card-bottom">进入栏目</span></a
+          ><a class="portal-card portal-news" href="news/index.html"
+            ><div class="card-top">
+              <span class="icon-box"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="17" rx="2" />
+                  <path d="M8 8h8M8 12h3M8 16h3M14 12h2M14 16h2" /></svg></span
+              ><span class="card-tag">NEWSROOM</span>
+            </div>
+            <h3>世界正在发生</h3>
+            <p>从熟悉的新闻来源，看看更大的世界。</p>
+            <span class="card-bottom">进入栏目</span></a
+          ><a
+            class="portal-card portal-workflow"
+            href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login"
+            ><div class="card-top">
+              <span class="icon-box"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="13" rx="2" />
+                  <path d="M8 21h8M12 17v4M7 9h4M7 12h8" /></svg></span
+              ><span class="card-tag">WORKSPACE</span>
+            </div>
+            <h3>工作流登录台</h3>
+            <p>永州传输全流程督办，进入自己的工作空间。</p>
+            <span class="card-bottom">授权账号登录</span></a
+          >
+        </div>
+      </section>
+      <section class="closing wrap">
+        <span class="closing-star" aria-hidden="true">✳</span>
+        <p>给生活一点留白，<br /><strong>给好奇心一点空间。</strong></p>
+        <a class="text-link" href="games/index.html">找一个游戏，散个步</a>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <a class="footer-name" href="index.html">唐修治的个人空间</a>
+          <p>记录想法，创造一点有趣的东西。</p>
+        </div>
+        <div class="footer-links">
+          <a href="articles/index.html">读文章</a
+          ><a href="games/index.html">玩游戏</a
+          ><a href="news/index.html">看新闻</a
+          ><a href="admin/index.html">管理后台</a>
+        </div>
+        <p class="footer-note">工作台使用独立授权账号登录。</p>
+      </div>
+    </footer>
+  </body>
 </html>

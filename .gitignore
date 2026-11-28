@@ -1,0 +1,4 @@
+# Local managed preview only; production remains GitHub Pages.
+dist/
+.openai/hosting.json
+node_modules/

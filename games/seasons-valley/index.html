@@ -29,4 +29,4 @@ for(const b of document.querySelectorAll('[data-animal]'))b.onclick=()=>{selecte
 document.getElementById('start-valley').onclick=()=>{const params=new URLSearchParams({play:'1',season:selectedSeason,animal:selectedAnimal});location.hash=params.toString();bootValley(selectedSeason,selectedAnimal);};
 const initial=new URLSearchParams(location.hash.slice(1));
 if(initial.get('play')==='1'&&['spring','summer','autumn','winter'].includes(initial.get('season'))){bootValley(initial.get('season'),['fox','hare','deer','squirrel'].includes(initial.get('animal'))?initial.get('animal'):'fox');}
-</script></body></html>
+</script><nav id="site-navigation" aria-label="网站入口" style="position:fixed;z-index:9999;right:12px;bottom:8px;display:flex;gap:12px;padding:6px 12px;background:#112c31e8;border-radius:12px;font:14px/1.7 system-ui"><a href="../index.html" style="color:#fff">游戏列表</a><a href="../../admin/index.html" style="color:#d6eeaf">管理后台</a></nav><script>if(self!==top)document.getElementById("site-navigation").remove();</script></body></html>

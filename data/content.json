@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "articles": [],
+  "games": [
+    {
+      "id": "seasons-valley",
+      "title": "四季河谷的漫步",
+      "summary": "沿着河谷走走停停，看四季更替，听流水与风声。",
+      "url": "games/seasons-valley/index.html"
+    }
+  ]
+}

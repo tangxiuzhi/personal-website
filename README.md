@@ -1,172 +1,67 @@
 # 唐修治的个人网站
 
-这是一个公开的静态网站，只有 HTML 和 CSS。没有构建步骤，没有登录，没有数据库，也没有第三方统计。
-
-现在可以在本地打开。还没有开启 GitHub Pages，也没有添加 `CNAME` 或绑定域名。
-
-文章和公开日记还没有内容。游戏栏目现有《四季河谷的漫步》，文件在 `games/seasons-valley/index.html`。空状态是如实写的，不要改成还没发生的经历、作品或日期。
-
-## 本地查看
-
-在仓库根目录执行：
-
-```bash
-python3 -m http.server 8080
-```
-
-浏览器打开 `http://127.0.0.1:8080/`。
-
-直接双击 `index.html` 也能看栏目页。游戏若带脚本，用上面的本地服务器看更可靠，有的浏览器会限制 `file://` 页面里的脚本。
+文章、游戏、新闻来源导航和工作流登录台，统一提供管理后台入口。静态 HTML、CSS 和原生 JavaScript，无运行时依赖、无构建步骤。沿用 GitHub Pages、`main` 分支根目录和自定义域名 `tangxiuzhi.com`。
 
 ## 页面
 
-| 文件 | 作用 |
-| --- | --- |
-| `index.html` | 首页 |
-| `articles/index.html` | 文章列表 |
-| `diary/index.html` | 公开日记列表 |
-| `games/index.html` | 游戏列表 |
-| `css/style.css` | 全站样式 |
-| `.nojekyll` | 若以后使用 GitHub Pages，告诉它不要用 Jekyll 处理这个仓库 |
+- `index.html`：首页。
+- `articles/index.html`、`articles/read.html?id=…`：文章列表与正文。
+- `games/index.html`、`games/play.html?id=…`：游戏列表与隔离运行容器。
+- `games/seasons-valley/index.html`：保留原有《四季河谷的漫步》。直接打开时也提供管理后台入口。
+- `news/index.html`：新华网、澎湃新闻、IT之家、36氪的来源导航，不伪造实时新闻。
+- `admin/index.html`：管理员登录、文章和游戏的发布、编辑、预览、删除。
+- `data/content.json`：公开的文章正文与游戏目录。
 
-栏目页带有内容安全策略，禁止这些页面加载脚本。文章和日记沿用同样的限制。游戏是独立 HTML，不要把这行策略复制进去，否则游戏自己的脚本跑不了。
+日记页面和导航已移除。工作流登录台仍链接至原有独立授权登录页面，其账号与业务数据不受本站后台管理。
 
-## 路径
+## 本地查看
 
-页面之间只用相对路径，不要写成以 `/` 开头的地址。
-
-这样三处都能用同一套链接：
-
-- 本地静态服务器，不管仓库放在哪个目录
-- 以后的 GitHub Pages 项目站点，地址形如 `https://<用户名>.github.io/personal-website/`
-- 以后若改用自定义域名，站点在域名根目录
-
-以 `/articles/` 这种根路径为例：在项目站点里会跳到用户主站的根目录，而不是本仓库。自定义域名的根目录则又能打开。相对路径两边都对。
-
-| 当前文件 | 首页 | 文章列表 | 日记列表 | 游戏列表 | 样式 |
-| --- | --- | --- | --- | --- | --- |
-| `index.html` | `index.html` | `articles/index.html` | `diary/index.html` | `games/index.html` | `css/style.css` |
-| `articles/index.html` 或 `articles/某篇.html` | `../index.html` | `index.html` | `../diary/index.html` | `../games/index.html` | `../css/style.css` |
-| `diary/index.html` 或 `diary/某篇.html` | `../index.html` | `../articles/index.html` | `index.html` | `../games/index.html` | `../css/style.css` |
-| `games/某游戏/index.html` | `../../index.html` | `../../articles/index.html` | `../../diary/index.html` | `../index.html` | 游戏可不使用全站样式 |
-
-## 添加一篇文章
-
-1. 在 `articles/` 新建文件，例如 `articles/note.html`。文件名用简短英文或拼音，避免空格。
-2. 把下面的骨架放进去，改标题和正文。
-3. 打开 `articles/index.html`，在列表里加上链接。若列表还是空状态，先去掉「还没有文章。」。
-4. 只提交准备公开的文字。
-
-```html
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
-  <title>文章标题 · 唐修治的个人网站</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <a class="skip" href="#content">跳到内容</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="site-name" href="../index.html">唐修治</a>
-      <nav aria-label="栏目">
-        <ul>
-          <li><a href="../index.html">首页</a></li>
-          <li><a href="index.html" aria-current="page">文章</a></li>
-          <li><a href="../diary/index.html">日记</a></li>
-          <li><a href="../games/index.html">游戏</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main id="content" class="wrap">
-    <h1>文章标题</h1>
-    <p>正文写在这里。</p>
-  </main>
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>这些页面是公开的静态文件。</p>
-    </div>
-  </footer>
-</body>
-</html>
+```sh
+python3 -m http.server 8080
 ```
 
-`articles/index.html` 里的列表示例：
+打开 `http://127.0.0.1:8080/`。页面采用相对路径，兼容自定义域名和 GitHub Pages 项目路径。内容页通过 `fetch` 读取目录，因此请使用 HTTP 服务，不要直接双击文件。
 
-```html
-<ul class="entries">
-  <li>
-    <a href="note.html">文章标题</a>
-    <p>一句自己写的说明。</p>
-  </li>
-</ul>
+## 管理后台
+
+1. 打开网站任意页面的「管理后台」。
+2. 使用有 `tangxiuzhi/personal-website` 写入权限的 GitHub 账号，在 [GitHub 设置](https://github.com/settings/personal-access-tokens/new) 创建 Fine-grained personal access token。
+3. Resource owner 选择 `tangxiuzhi`；仅授权 `personal-website` 仓库，将 Repository permissions → Contents 设为 **Read and write**。Metadata 的读取权限由 GitHub 自动提供。不需要授权其他仓库。
+4. 在后台粘贴凭证连接，发布或管理内容。
+
+授权凭证只在页面模块内存中保留，不写入 localStorage、sessionStorage、Cookie、URL、源码或仓库；输入框在提交连接时立即清空。退出、刷新或离开页面后需重新连接。后台仅向固定的 `https://api.github.com` 发出授权请求，并拒绝跟随重定向。请在可信设备上操作，使用适当到期时间的凭证，离开时退出登录。
+
+后台校验 GitHub 账号及仓库写入权限。每次保存通过 GitHub Git Database API 建立一次原子提交，内容目录与游戏文件一并更新，最后以 `force: false` 更新 `main`。检测到其他修改时拒绝覆盖，保留草稿并提示先刷新。网络中断时请先刷新确认提交结果，避免重复发布。
+
+GitHub Pages 由 `main` 的提交触发，完成部署后访客才会看到更新。后台的保存成功表示仓库已接收提交，不表示 Pages 部署已经完成。可在仓库 Pages / Actions 中检查部署状态。如果分支保护禁止直接写入，需按仓库规则调整发布流程；后台会显示错误，不会绕过保护。
+
+### 文章
+
+填写标题、一句话介绍和正文，支持发布与编辑。正文按纯文本呈现，空行分段，HTML 也作为文字显示，不会执行。没有文章时保留真实的空状态。
+
+### 游戏
+
+- **游戏链接**：发布 HTTPS 地址，前台在新窗口打开，使用 `noopener noreferrer`。
+- **上传 HTML 游戏**：支持不超过 5 MB 的单个 `.html` 或 `.htm` 文件，保存至 `games/uploads/`。图片、样式和脚本需内嵌或使用完整 HTTPS 地址，不支持多文件 ZIP。
+- 本站游戏从列表进入时在 `sandbox="allow-scripts allow-pointer-lock allow-downloads"` 的 iframe 中运行，不授予 `allow-same-origin`、弹窗或顶层导航权限。依赖同源存储、弹窗登录或独立服务器的游戏可能需要改用外部链接。
+- 后台上传预览禁用脚本和外部网络，只预览静态画面；正式游戏页可运行脚本。
+- 删除上传游戏时，目录条目和上传文件同时删除。删除既有《四季河谷的漫步》条目只会从列表下架，保留原始源文件。
+
+### 删除与恢复
+
+删除前显示二次确认。删除会提交到 GitHub，所有内容都可通过 Git 历史恢复。公开仓库中的旧文章和游戏即使从当前网站删除，仍可能存在于历史提交中，请只发布准备公开的内容。
+
+## 开发与验证
+
+页面不需要安装 npm 依赖即可托管。开发测试使用 Node.js 22+ 和 jsdom：
+
+```sh
+npm ci
+npm test
 ```
 
-有文章之后，首页对应卡片上的「还没有文章。」可以改成你自己的简短说明，也可以留着，直到你愿意改。
+测试覆盖目录校验、中文编码、安全 URL、权限拒绝、原子发布/删除、并发冲突及后台交互；使用模拟 GitHub 请求，不修改真实仓库。
 
-## 添加一篇公开日记
+`css/style.css` 统一视觉样式。公共内容用 `js/content.js` 读取，`js/model.js` 负责共享校验，后台交互在 `js/admin.js`，GitHub 提交逻辑在 `js/github.js`。不要把任何授权凭证加入文件。
 
-做法和文章相同，目录换成 `diary/`。
-
-日记页没有隐藏开关。写进 `diary/` 并出现在列表里的内容，任何人都能阅读。不想公开的文字不要放进这个仓库。
-
-列表仍写在 `diary/index.html`。有日记后，去掉「还没有公开日记。」
-
-## 添加一个本地 HTML 游戏
-
-1. 建目录 `games/游戏目录名/`，里面放该游戏的 `index.html`。图片、脚本、样式都放在这个目录里，用相对路径引用。
-2. 打开 `games/index.html`，在现有列表里加上指向 `游戏目录名/index.html` 的链接。若列表还是空状态，先去掉「还没有游戏。」。
-3. 游戏页是完整的独立页面，不必套用栏目页的导航和内容安全策略。
-4. 若要链回本站，用相对路径。回到游戏列表是 `../index.html`，回到首页是 `../../index.html`。
-
-```html
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>游戏名称</title>
-</head>
-<body>
-  <p><a href="../index.html">返回游戏列表</a></p>
-</body>
-</html>
-```
-
-`games/index.html` 里的列表示例：
-
-```html
-<ul class="entries">
-  <li>
-    <a href="游戏目录名/index.html">游戏名称</a>
-    <p>一句自己写的说明。</p>
-  </li>
-</ul>
-```
-
-不要默认引用其他网站上的脚本。游戏需要的文件放在它自己的目录里，离线打开和以后放到静态托管上都更稳。
-
-## 更新导航
-
-导航没有单独的生成步骤，写在每个栏目页、文章页和日记页里。改名称或增减栏目时，把现有这些文件里的 `<nav>` 改成同一套链接，并按该文件所在目录调整 `../`：
-
-- `index.html`
-- `articles/index.html`
-- `diary/index.html`
-- `games/index.html`
-- 之后新增的每篇文章、每篇日记
-
-当前页的链接加上 `aria-current="page"`。文章正文算在「文章」下，日记正文算在「日记」下。
-
-游戏页默认不加这套导航。要加的话，按 `games/某游戏/index.html` 那一行的相对路径自己写。
-
-## 现在没有的东西
-
-- 没有可视化写作后台。更新就是改 HTML，再提交到仓库。
-- 没有登录，也没有只给自己看的区域。
-- 没有访问统计。
-- 没有开启 GitHub Pages，没有 `CNAME`，没有改域名解析。这些要另外决定，不在这次的页面里。
+`.openai/hosting.json` 和 `dist/` 仅用于受管环境本地预览，已被忽略，不参与 GitHub Pages 发布。原域名 `CNAME` 和 `.nojekyll` 保持有效。
