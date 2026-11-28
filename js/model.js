@@ -1,4 +1,5 @@
-export const REPO = "tangxiuzhi/personal-website";
+export const CONTENT_SERVICE =
+  "https://tangxiuzhi-content-admin.tangteng626764.chatgpt.site";
 export const BRANCH = "main";
 export const CATALOG = "data/content.json";
 export const MAX_GAME_BYTES = 5 * 1024 * 1024;
@@ -61,7 +62,10 @@ export function safeGameURL(value) {
   if (
     /^games\/(?:seasons-valley\/index|uploads\/[a-z0-9-]+)\.html$/.test(value)
   )
-    return new URL(value, SITE_ROOT).href;
+    return new URL(
+      value,
+      value.startsWith("games/uploads/") ? CONTENT_SERVICE + "/" : SITE_ROOT,
+    ).href;
   const url = new URL(value);
   if (url.protocol !== "https:" || url.username || url.password)
     throw new Error("外部游戏必须使用不包含账号密码的 HTTPS 地址。");
