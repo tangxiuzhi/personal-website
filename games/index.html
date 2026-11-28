@@ -1,41 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="唐修治的 HTML 游戏。《四季河谷的漫步》。">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
-  <title>游戏 · 唐修治的个人网站</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-  <a class="skip" href="#content">跳到内容</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="site-name" href="../index.html">唐修治</a>
-      <nav aria-label="栏目">
-        <ul>
-          <li><a href="../index.html">首页</a></li>
-          <li><a href="../articles/index.html">文章</a></li>
-          <li><a href="../diary/index.html">日记</a></li>
-          <li><a href="index.html" aria-current="page">游戏</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main id="content" class="wrap">
-    <h1>游戏</h1>
-    <p>这里列出可以在浏览器里直接打开的 HTML 游戏。</p>
-    <ul class="entries">
-      <li>
-        <a href="seasons-valley/index.html">《四季河谷的漫步》</a>
-      </li>
-    </ul>
-  </main>
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>这些页面是公开的静态文件。</p>
-    </div>
-  </footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="在浏览器里体验唐修治的小游戏。" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <title>游戏 · 唐修治</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script type="module" src="../js/content.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">跳到内容</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="../index.html"
+          ><span class="monogram" aria-hidden="true">唐</span
+          ><span>唐修治<small>PERSONAL SPACE</small></span></a
+        >
+        <nav aria-label="主导航">
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="../articles/index.html">文章</a></li>
+            <li><a href="../games/index.html" aria-current="page">游戏</a></li>
+            <li><a href="../news/index.html">新闻</a></li>
+            <li>
+              <a
+                href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login"
+                >工作台</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a class="admin-link" href="../admin/index.html"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="11" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg
+          ><span>管理后台</span></a
+        >
+      </div>
+    </header>
+    <main id="content">
+      <section class="page-heading wrap">
+        <p class="eyebrow">THE PLAYGROUND</p>
+        <h1>去另一个世界，待一会儿。</h1>
+        <p>不用赶路，也不必有目的。打开一个游戏，享受片刻。</p>
+      </section>
+      <section class="wrap content-section">
+        <div class="section-heading">
+          <h2>游戏收藏架</h2>
+          <span class="small-label" id="content-count"></span>
+        </div>
+        <p id="load-status" role="status">正在读取游戏…</p>
+        <div id="game-list" class="game-grid"></div>
+        <noscript
+          ><p>
+            请启用 JavaScript 查看游戏列表。你也可以直接玩<a
+              href="seasons-valley/index.html"
+              >四季河谷的漫步</a
+            >。
+          </p></noscript
+        >
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <a class="footer-name" href="../index.html">唐修治的个人空间</a>
+          <p>记录想法，创造一点有趣的东西。</p>
+        </div>
+        <div class="footer-links">
+          <a href="../articles/index.html">读文章</a
+          ><a href="../games/index.html">玩游戏</a
+          ><a href="../news/index.html">看新闻</a
+          ><a href="../admin/index.html">管理后台</a>
+        </div>
+        <p class="footer-note">工作台使用独立授权账号登录。</p>
+      </div>
+    </footer>
+  </body>
 </html>

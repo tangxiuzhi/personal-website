@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="唐修治个人网站的内容管理后台。" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.github.com; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <title>管理后台 · 唐修治</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script type="module" src="../js/admin.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">跳到内容</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="../index.html"
+          ><span class="monogram" aria-hidden="true">唐</span
+          ><span>唐修治<small>PERSONAL SPACE</small></span></a
+        >
+        <nav aria-label="主导航">
+          <ul>
+            <li><a href="../index.html">首页</a></li>
+            <li><a href="../articles/index.html">文章</a></li>
+            <li><a href="../games/index.html">游戏</a></li>
+            <li><a href="../news/index.html">新闻</a></li>
+            <li>
+              <a
+                href="https://yongzhou-transmission-workflow.tangteng626764.chatgpt.site/login"
+                >工作台</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a class="admin-link" href="../admin/index.html" aria-current="page"
+          ><svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="10" width="14" height="11" rx="2" />
+            <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg
+          ><span>管理后台</span></a
+        >
+      </div>
+    </header>
+    <main id="content">
+      <section class="page-heading wrap">
+        <p class="eyebrow">THE EDITOR'S DESK</p>
+        <h1>让新的想法，出现在这里。</h1>
+        <p>文章与游戏，在一个地方管理。</p>
+      </section>
+      <section class="wrap admin-section">
+        <div id="login-panel" class="editor-panel login-panel">
+          <div>
+            <span class="icon-box"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h5" /></svg
+            ></span>
+            <h2>管理员登录</h2>
+            <p>使用有本仓库写入权限的 GitHub 账号授权，直接发布到网站。</p>
+            <ol class="setup-steps">
+              <li>在 GitHub 创建 Fine-grained personal access token。</li>
+              <li>
+                仅选择 <strong>personal-website</strong> 仓库，将
+                <strong>Contents</strong> 设为 <strong>Read and write</strong>。
+              </li>
+              <li>粘贴下方授权凭证，连接管理后台。</li>
+            </ol>
+            <a
+              class="text-link"
+              href="https://github.com/settings/personal-access-tokens/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              >前往 GitHub 创建授权凭证</a
+            >
+          </div>
+          <form id="login-form">
+            <label for="github-token">GitHub 授权凭证</label
+            ><input
+              id="github-token"
+              type="password"
+              autocomplete="off"
+              spellcheck="false"
+              required
+              placeholder="github_pat_…"
+            />
+            <p class="field-help">
+              凭证只用于当前页面，刷新或退出后需重新连接。请仅在自己的设备上使用。
+            </p>
+            <button class="button primary" type="submit">连接管理后台</button>
+          </form>
+        </div>
+        <p
+          id="admin-status"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <div id="dashboard" hidden>
+          <div class="dashboard-bar">
+            <div>
+              <strong id="admin-user"></strong>
+              <p class="muted">
+                内容保存后，网站将在 GitHub Pages 部署完成后更新。
+              </p>
+            </div>
+            <button id="logout" class="button secondary" type="button">
+              退出登录
+            </button>
+          </div>
+          <div class="admin-grid">
+            <section class="editor-panel">
+              <div class="section-heading">
+                <h2 id="editor-heading">发布新内容</h2>
+                <button
+                  id="cancel-edit"
+                  class="text-button"
+                  type="button"
+                  hidden
+                >
+                  取消编辑
+                </button>
+              </div>
+              <form id="content-form">
+                <label for="content-type">内容类型</label
+                ><select id="content-type">
+                  <option value="article">文章</option>
+                  <option value="game">游戏</option></select
+                ><label for="title">标题</label
+                ><input
+                  id="title"
+                  maxlength="120"
+                  required
+                  placeholder="起一个好标题"
+                /><label for="summary">一句话介绍</label
+                ><textarea
+                  id="summary"
+                  rows="2"
+                  maxlength="500"
+                  placeholder="让读者知道这是什么"
+                ></textarea>
+                <div id="article-fields">
+                  <label for="body">文章正文</label
+                  ><textarea
+                    id="body"
+                    rows="14"
+                    maxlength="200000"
+                    placeholder="从这里开始写…
+
+空行分段，内容按纯文本发布。"
+                  ></textarea>
+                  <p class="field-help">
+                    按原文显示，空行分段；不执行 HTML 或脚本。
+                  </p>
+                </div>
+                <div id="game-fields" hidden>
+                  <label for="game-mode">发布方式</label
+                  ><select id="game-mode">
+                    <option value="url">游戏链接</option>
+                    <option value="file">上传 HTML 游戏</option>
+                  </select>
+                  <div id="url-field">
+                    <label for="game-url">游戏网址</label
+                    ><input id="game-url" type="url" placeholder="https://…" />
+                    <p class="field-help">
+                      填写 HTTPS 地址。外部游戏会在新窗口打开。
+                    </p>
+                  </div>
+                  <div id="file-field" hidden>
+                    <label for="game-file">HTML 游戏文件</label
+                    ><input
+                      id="game-file"
+                      type="file"
+                      accept=".html,.htm,text/html"
+                    />
+                    <p class="field-help">
+                      支持不超过 5 MB 的单个 HTML 文件。图片和脚本需内嵌或使用
+                      HTTPS 完整地址。游戏在隔离窗口中运行。
+                    </p>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button
+                    id="preview-button"
+                    class="button secondary"
+                    type="button"
+                  >
+                    预览内容</button
+                  ><button
+                    id="publish-button"
+                    class="button primary"
+                    type="submit"
+                  >
+                    发布内容
+                  </button>
+                </div>
+              </form>
+              <section id="preview-panel" class="preview-panel" hidden>
+                <h3>内容预览</h3>
+                <h2 id="preview-title"></h2>
+                <p id="preview-summary" class="muted"></p>
+                <div id="preview-body" class="article-body"></div>
+              </section>
+            </section>
+            <section class="editor-panel">
+              <div class="section-heading">
+                <h2>已发布内容</h2>
+                <button id="refresh-content" class="text-button" type="button">
+                  刷新
+                </button>
+              </div>
+              <div id="managed-content"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+      <dialog id="delete-dialog">
+        <form method="dialog">
+          <h2>删除这项内容？</h2>
+          <p id="delete-description"></p>
+          <p class="muted">删除会提交到网站仓库，可通过 Git 历史恢复。</p>
+          <div class="form-actions">
+            <button class="button secondary" value="cancel">取消</button
+            ><button class="button danger" value="confirm">确认删除</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <a class="footer-name" href="../index.html">唐修治的个人空间</a>
+          <p>记录想法，创造一点有趣的东西。</p>
+        </div>
+        <div class="footer-links">
+          <a href="../articles/index.html">读文章</a
+          ><a href="../games/index.html">玩游戏</a
+          ><a href="../news/index.html">看新闻</a
+          ><a href="../admin/index.html">管理后台</a>
+        </div>
+        <p class="footer-note">工作台使用独立授权账号登录。</p>
+      </div>
+    </footer>
+  </body>
+</html>
