@@ -1,6 +1,5 @@
 import {
-  SITE_ROOT,
-  CATALOG,
+  CONTENT_SERVICE,
   validateCatalog,
   safeGameURL,
   isLocalGame,
@@ -16,7 +15,7 @@ function node(tag, className, text) {
   return el;
 }
 try {
-  const response = await fetch(new URL(CATALOG, SITE_ROOT), {
+  const response = await fetch(CONTENT_SERVICE + "/api/content", {
     cache: "no-cache",
   });
   if (!response.ok) throw new Error("读取失败");
