@@ -1,6 +1,6 @@
 # 唐修治的个人网站
 
-文章、游戏、新闻来源导航和工作流登录台，统一提供管理后台入口。静态 HTML、CSS 和原生 JavaScript，无运行时依赖、无构建步骤。沿用 GitHub Pages、`main` 分支根目录和自定义域名 `tangxiuzhi.com`。
+文章、游戏、每日新闻选读和工作流登录台，统一提供管理后台入口。静态 HTML、CSS 和原生 JavaScript，无运行时依赖、无构建步骤。沿用 GitHub Pages、`main` 分支根目录和自定义域名 `tangxiuzhi.com`。
 
 ## 页面
 
@@ -8,7 +8,7 @@
 - `articles/index.html`、`articles/read.html?id=…`：文章列表与正文。
 - `games/index.html`、`games/play.html?id=…`：游戏列表与隔离运行容器。
 - `games/seasons-valley/index.html`：保留原有《四季河谷的漫步》。直接打开时也提供管理后台入口。
-- `news/index.html`：新华网、澎湃新闻、IT之家、36氪的来源导航，不伪造实时新闻。
+- `news/index.html`：每日新闻选读栏目，约五分钟阅读，保留新闻日期与可靠来源；尚无已发布内容时显示真实空状态。
 - `admin/index.html`：管理员登录、文章和游戏的发布、编辑、预览、删除。
 - `data/content.json`：公开的文章正文与游戏目录。
 
